@@ -1,16 +1,16 @@
 ### 0x01配置虚拟机环境
-1.通过种子文件[kali-linux-2019-4-vmware-amd64-zip.torrent](./kali-linux-2019-4-vmware-amd64-zip.torrent)，下载kali虚拟机，下载下来之后解压用VMware解压
-2.修改虚拟机的配置，把内存调到12G，硬盘给到280G
+1.通过种子文件[kali-linux-2019-4-vmware-amd64-zip.torrent](./kali-linux-2019-4-vmware-amd64-zip.torrent)，下载kali虚拟机，下载下来之后解压用VMware解压<br/>
+2.修改虚拟机的配置，把内存调到12G，硬盘给到280G<br/>
 ![avatar](./img/17.png)<br/>
-3.接下来，把刚才我们添加的200G空间应用到磁盘并挂载到文件夹上
-4.首先进入系统，打开Gparted软件
+3.接下来，把刚才我们添加的200G空间应用到磁盘并挂载到文件夹上<br/>
+4.首先进入系统，打开Gparted软件<br/>
 ![avatar](./img/1.png)<br/>
-5.划分我们刚刚添加的200G空间，选中unallocated部分右击，选择新建，按照默认即可，即可新建这个200G的ext4分区，点击选择Apply，应用到磁盘。
+5.划分我们刚刚添加的200G空间，选中unallocated部分右击，选择新建，按照默认即可，即可新建这个200G的ext4分区，点击选择Apply，应用到磁盘。<br/>
 ![avatar](./img/2.png)<br/>
 ![avatar](./img/3.png)<br/>
 ![avatar](./img/4.png)<br/>
 ![avatar](./img/5.png)<br/>
-6.使用fdisk -l查看是否新建分区成功，如下图所示，分区新建成功
+6.使用fdisk -l查看是否新建分区成功，如下图所示，分区新建成功<br/>
 ![avatar](./img/6.png)<br/>
 7.然后将这个新建的磁盘给mount到某个文件夹
 ```
@@ -18,7 +18,7 @@ cd ~/Desktop
 mkdir Compile
 mount /dev/sda3 Compile/
 ```
-8.修改kali的锁屏策略，让其不要休眠，防止编译的时候出现休眠情况
+8.修改kali的锁屏策略，让其不要休眠，防止编译的时候出现休眠情况<br/>
 ![avatar](./img/22.png)<br/>
 ![avatar](./img/23.png)<br/>
 ![avatar](./img/24.png)<br/>
@@ -38,8 +38,7 @@ mount /dev/sda3 Compile/
 运行apt install libc6:i386 libncurses5:i386 libstdc++6:i386会出现下图情况，选择yes即可
 ![avatar](./img/20.png)<br/>
 
-2.增加swap空间
-为了防止编译的时候内存不够，我们给swap加10G
+2.增加swap空间。为了防止编译的时候内存不够，我们给swap加10G
 ```
 dd if=/dev/zero of=swapfile bs=1M count=10240
 mkswap swapfile
@@ -49,8 +48,7 @@ mkswap swapfile
 swapon swapfile
 ```
 
-3.安装openjdk8
-系统内置的openjdk 11太新了，会报错，装个官网要求的openjdk-8
+3.安装openjdk8。系统内置的openjdk 11太新了，会报错，装个官网要求的openjdk-8
 ```
 apt install openjdk-8-jdk
 ```
@@ -90,8 +88,8 @@ javac -version
 显示上图效果表示安装成功
 
 ### 0x04准备源码
-1.因为公司的网络实在太慢了，导致我几次都没有下载下来，所以最后还是用了肉丝大佬提供的源码
-2.访问这个百度云链接，下载aosp712r8的源码
+1.因为公司的网络实在太慢了，导致我几次都没有下载下来，所以最后还是用了肉丝大佬提供的源码<br/>
+2.访问这个百度云链接，下载aosp712r8的源码<br/>
 ```
 链接：https://pan.baidu.com/s/1yQL0nOLMlw6MVR0uNaa1pQ 
 提取码：benx
@@ -100,7 +98,7 @@ javac -version
 3.下载下来之后，解压aosp712r8.zip这个文件夹，然后把解压出来的内容拷贝到kali中，并解压
 ![avatar](./img/31.png)<br/>
 ![avatar](./img/32.png)<br/>
-4.然后我们访问下面这个网站，下载对应的驱动
+4.然后我们访问下面这个网站，下载对应的驱动<br/>
 ```
 https://developers.google.com/android/drivers
 ```
@@ -172,7 +170,7 @@ fastboot
 ![avatar](./img/45.png)<br/>
 出现上图内容，即成功
 
-8.再次运行./flash-all.sh命令
+8.再次运行./flash-all.sh命令<br/>
 ![avatar](./img/46.png)<br/>
 出现上图内容，等待运行完毕，然后开启手机
 ![avatar](./img/16.png)<br/>
@@ -180,7 +178,7 @@ fastboot
 
 
 ### 0x07总结
-坑一：kali的软件源中的openjdk8被移除了，需要我们手动安装openjdk8
+坑一：kali的软件源中的openjdk8被移除了，需要我们手动安装openjdk8<br/>
 坑二：重启之后控制台无法使用fastboot，这时候需要把编译出来的fastboot加入到临时环境变量中才能成功刷机
 
 
