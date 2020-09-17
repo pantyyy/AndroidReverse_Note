@@ -7,3 +7,4 @@
 ### 0x03 [kali安装pyenv](./kali安装pyenv/KaliLinux搭建pyenv.md)
 ### 0x04 [安装任意版本Frida与自定义Frida端口](./安装任意版本Frida与自定义Frida端口/全版本Frida与自定义Frida端口.md)
 ### 0x05 [抓包环境搭建](./抓包环境搭建/抓包环境搭建.md)
+### 0x06 [Xposed编译](./Xposed编译/Xposed编译.md)
